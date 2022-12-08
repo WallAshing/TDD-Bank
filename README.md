@@ -1,4 +1,6 @@
 # Features done
 
 - Voir son solde
-- retirer de l'argent
+- Retirer de l'argent
+- Déposer de l'argent
+- Consumter l'historique des transactions

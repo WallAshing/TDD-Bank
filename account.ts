@@ -1,11 +1,25 @@
 export class Account {
-    solde: number
+    balance: number
+    history: Array<string> = []
 
     constructor(money: number) {
-        this.solde = money
+        this.balance = money
     }
     withdrawal(amount: number) {
-        this.solde -= amount
-        return this.solde
+        this.balance -= amount
+        this.history.push(`${amount} withdrawn`)
+        return this.balance
     }
+    deposit(amount: number) {
+        this.balance += amount
+        this.history.push(`${amount} deposed`)
+        return this.balance
+    }
+    getBalance() {
+        return this.balance
+    }
+    getHistory() {
+        return this.history
+    }
+
 }
