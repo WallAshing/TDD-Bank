@@ -21,5 +21,11 @@ export class Account {
     getHistory() {
         return this.history
     }
-
+    transfer(account: Account, amount: number) {
+        this.balance -= amount
+        this.history.push(`${amount} transfered`)
+        account.balance += amount
+        account.history.push(`${amount} received`)
+        return this.balance
+    }
 }
