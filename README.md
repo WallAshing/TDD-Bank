@@ -5,3 +5,5 @@
 - Voir son solde
 - Faire les virements
 - Consulter l'historique des transactions
+- Faire un emprunt
+- Gerer les devises
