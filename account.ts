@@ -28,4 +28,9 @@ export class Account {
         account.history.push(`${amount} received`)
         return this.balance
     }
+    loan(amount: number) {
+        this.balance += amount
+        this.history.push(`${amount} loan`)
+        return this.balance
+    }
 }

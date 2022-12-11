@@ -31,6 +31,15 @@ describe('Account basic actions', () => {
         })
     })
 
+    describe('Take out a loan', () => {
+        it('should return the balance after borrowing money', () => {
+            expect(account1.loan(500)).toBe(5500)
+        })
+        it('should return the balance after borrowing money', () => {
+            expect(account1.loan(200)).toBe(5200)
+        })
+    })
+
     describe('Transaction history', () => {
         it('should return the history of transactions empty', () => {
             expect(account1.getHistory()).toStrictEqual([])
@@ -49,6 +58,16 @@ describe('Account basic actions', () => {
             account1.deposit(500)
             expect(account1.getHistory()).toStrictEqual(['500 withdrawn', '500 deposed'])
         })
+        it('should return the history of transactions with withdraw and deposit', () => {
+            account1.withdrawal(500)
+            account1.deposit(500)
+            expect(account1.getHistory()).toStrictEqual(['500 withdrawn', '500 deposed'])
+        })
+        it('should return the history of transactions with loan', () => {
+            account1.loan(500)
+            expect(account1.getHistory()).toStrictEqual(['500 loan'])
+        })
+
     })
 })
 
