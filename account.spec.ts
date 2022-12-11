@@ -1,9 +1,13 @@
 import { Account } from './account';
+import { Bank } from "./bank";
 
 describe('Account basic actions', () => {
     let account1: Account
+    let bank: Bank
     beforeEach(() => {
-        account1 = new Account(5000, '€')
+        bank = new Bank()
+        let accountId = bank.createAccount(5000, '€')
+        account1 = bank.getAccount(accountId)
         expect(account1.balance).toBe(5000)
         expect(account1.currency).toBe('€')
     })
@@ -68,16 +72,19 @@ describe('Account basic actions', () => {
             account1.loan(500)
             expect(account1.getHistory()).toStrictEqual(['500€ loan'])
         })
-
     })
 })
 
 describe('Account transfers', () => {
     let account1: Account
     let account2: Account
+    let bank: Bank
     beforeEach(() => {
-        account1 = new Account(5000, '€')
-        account2 = new Account(2500, '€')
+        bank = new Bank()
+        let accountId1 = bank.createAccount(5000, '€')
+        let accountId2 = bank.createAccount(2500, '€')
+        account1 = bank.getAccount(accountId1)
+        account2 = bank.getAccount(accountId2)
         expect(account1.balance).toBe(5000)
         expect(account2.balance).toBe(2500)
         expect(account1.currency).toBe('€')
