@@ -7,3 +7,4 @@
 - Consulter l'historique des transactions
 - Faire un emprunt
 - Gerer les devises
+- Cloturer un compte
