@@ -1,11 +1,12 @@
 export class Account {
     balance: number
-    history: Array<string> = []
+    history: Array<string>
     currency: string
 
     constructor(money: number, currency: string) {
         this.balance = money
         this.currency = currency
+        this.history = []
     }
     withdrawal(amount: number) {
         this.balance -= amount

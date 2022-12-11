@@ -2,14 +2,22 @@ import { Account } from './account';
 import { Bank } from "./bank";
 
 describe('Account basic actions', () => {
-    let account1: Account
     let bank: Bank
+    let account1: Account
     beforeEach(() => {
         bank = new Bank()
         let accountId = bank.createAccount(5000, '€')
         account1 = bank.getAccount(accountId)
         expect(account1.balance).toBe(5000)
         expect(account1.currency).toBe('€')
+    })
+
+    describe('Close an account', () => {
+        it('should return undefined', () => {
+            let newAccountId = bank.createAccount(1000, '€')
+            bank.closeAccount(newAccountId)
+            expect(bank.accounts.get(newAccountId)).toBe(undefined)
+        })
     })
 
     describe('Client balance', () => {
@@ -76,9 +84,9 @@ describe('Account basic actions', () => {
 })
 
 describe('Account transfers', () => {
+    let bank: Bank
     let account1: Account
     let account2: Account
-    let bank: Bank
     beforeEach(() => {
         bank = new Bank()
         let accountId1 = bank.createAccount(5000, '€')

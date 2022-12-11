@@ -1,14 +1,14 @@
 import { Account } from './account';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 export class Bank {
-    accounts: Map<string, Account> = new Map
+    accounts: Map<string, Account>
 
     constructor() {
-
+        this.accounts = new Map
     }
 
-    getAccount(key: string) {
+    getAccount(key: string): Account {
         return this.accounts.get(key)
     }
 
@@ -16,12 +16,11 @@ export class Bank {
         let account = new Account(startingAmount, currency)
         let accountId = uuidv4()
         this.accounts.set(accountId, account)
-        console.log(this.accounts)
         return accountId
     }
 
-    closeAccount() {
-
+    closeAccount(key: string): void {
+        this.accounts.delete(key)
     }
 }
 
